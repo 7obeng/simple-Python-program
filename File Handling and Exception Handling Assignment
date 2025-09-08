@@ -1,0 +1,29 @@
+def modify_file_content(content):
+    """Modify the file content. In this example, convert to uppercase."""
+    return content.upper()
+
+def main():
+    filename = input("Enter the filename to read: ")
+
+    try:
+        with open(filename, 'r') as file:
+            content = file.read()
+    except FileNotFoundError:
+        print(f"❌ Error: The file '{filename}' does not exist.")
+        return
+    except IOError:
+        print(f"❌ Error: The file '{filename}' could not be read.")
+        return
+
+    modified_content = modify_file_content(content)
+
+    output_filename = "modified_output.txt"
+    try:
+        with open(output_filename, 'w') as outfile:
+            outfile.write(modified_content)
+        print(f"✅ Success! Modified content written to '{output_filename}'.")
+    except IOError:
+        print(f"❌ Error: Unable to write to '{output_filename}'.")
+
+if __name__ == "__main__":
+    main()
