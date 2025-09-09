@@ -1,0 +1,39 @@
+# Base Class
+class Superhero:
+    def __init__(self, name, superpower, strength_level, team):
+        self.name = name
+        self.superpower = superpower
+        self.strength_level = strength_level
+        self.team = team
+
+    def introduce(self):
+        print(f"I am {self.name} from {self.team} team. My power is {self.superpower}!")
+
+    def use_power(self):
+        print(f"{self.name} uses {self.superpower} with strength level {self.strength_level}!")
+
+# Inherited Class
+class Villain(Superhero):
+    def __init__(self, name, superpower, strength_level, evil_plan):
+        super().__init__(name, superpower, strength_level, team="Rogues")
+        self.evil_plan = evil_plan
+
+    # Overriding method
+    def use_power(self):
+        print(f"{self.name} unleashes {self.superpower} with dark energy! 💀")
+
+    def reveal_plan(self):
+        print(f"My evil plan is: {self.evil_plan}")
+
+# Example Usage
+hero = Superhero("Starlight", "Laser Beams", 85, "Guardians")
+villain = Villain("Darkshade", "Shadow Control", 90, "Steal the moon!")
+
+hero.introduce()
+hero.use_power()
+
+print("-----")
+
+villain.introduce()
+villain.use_power()
+villain.reveal_plan()
